@@ -19,7 +19,7 @@ pipeline  {
                     					echo "Output: ${output}"
 							
 							//def output2= sh(returnStdout: true, script: '/usr/local/bin/aws lexv2-models --region us-east-1 start-test-execution --test-set-id P1MSHKN1E6 --target \'{"botAliasTarget":{"botId":"TM7XGIZCM9","botAliasId":"TSTALIASID","localeId":"en_US"}}\' --api-mode NonStreaming --output text --query \'{testExecutionId:testExecutionId}\' --region $AWSRegion)'
-							def output2= sh(returnStdout: true, script: '/usr/local/bin/aws s3 ls'
+							def output2= sh(returnStdout: true, script: '/usr/local/bin/aws s3 ls)'
 							echo "Output2: ${output2}"																	
                 				}
        			        	sh "/usr/local/bin/aws lexv2-models --region us-east-1 start-test-execution --test-set-id P1MSHKN1E6 --target '{\"botAliasTarget\":{\"botId\":\"TM7XGIZCM9\",\"botAliasId\":\"TSTALIASID\",\"localeId\":\"en_US\"}}' --api-mode NonStreaming --output text --query '{testExecutionId:testExecutionId}' --region $AWSRegion"     
