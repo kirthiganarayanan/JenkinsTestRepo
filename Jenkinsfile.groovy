@@ -13,7 +13,7 @@ pipeline  {
 							def output2= sh(returnStdout: true, script: '/usr/local/bin/aws lexv2-models start-test-execution --test-set-id P1MSHKN1E6 --target \'{"botAliasTarget":{"botId":"TM7XGIZCM9","botAliasId":"TSTALIASID","localeId":"en_US"}}\' --api-mode NonStreaming --output text --query \'{testExecutionId:testExecutionId}\' --region "$Region"')
 							echo "Start Test Execution Result: ${output2}"	
 							def output3= sh(returnStdout: true, script: '/usr/local/bin/aws lexv2-models list-test-execution-result-items --test-execution-id I4XPLETVMD --result-filter-by \'{"resultTypeFilter":"OverallTestResults","conversationLevelTestResultsFilterBy":{"endToEndResult": "Mismatched"}}\' --region "$Region"')
-							echo "Test Execution Results: {output3}"
+							echo "Test Execution Results: ${output3}"
 
                 				}       			        	
     	 		 		}
