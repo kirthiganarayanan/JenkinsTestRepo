@@ -15,6 +15,7 @@ pipeline  {
 						script {
 							def regionToAwsRegion = ['us': 'us-east-1', 'jp': 'ap-northeast-1', 'gb': 'eu-west-2', 'ie': 'eu-west-1', 'sg': 'ap-southeast-1', 'au': 'ap-southeast-2']
 							def AWSRegion = regionToAwsRegion[Region]
+							echo "AWSRegion is: ${AWSRegion}"
                     					//def output = sh(returnStdout: true, script: 'pwd')
                     					//echo "Output: ${output}"
 							
