@@ -10,12 +10,16 @@ pipeline  {
 		stage("AWS CLI demo") {
 			steps {
 				withCredentials([[
-       			$class: 'AmazonWebServicesCredentialsBinding',
-       			credentialsId: 'aws-jenkins-demo-id',
-      			accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-       			secretKeyVariable: 'AWS_SECRET_ACCESS_KEY' ]]) {
-       			       sh "/usr/local/bin/aws lexv2-models --region us-east-1 start-test-execution --test-set-id P1MSHKN1E6 --target '{\"botAliasTarget\":{\"botId\":\"TM7XGIZCM9\",\"botAliasId\":\"TSTALIASID\",\"localeId\":\"en_US\"}}' --api-mode NonStreaming --output text --query '{testExecutionId:testExecutionId}' --region $AWSRegion"     
-       		    }
+       					$class: 'AmazonWebServicesCredentialsBinding',
+       					credentialsId: 'aws-jenkins-demo-id',
+      					accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+       					secretKeyVariable: 'AWS_SECRET_ACCESS_KEY' ]]) {
+						script {
+                    					def output = sh(returnStdout: true, script: 'pwd')
+                    					echo "Output: ${output}"
+                				}
+       			        	sh "/usr/local/bin/aws lexv2-models --region us-east-1 start-test-execution --test-set-id P1MSHKN1E6 --target '{\"botAliasTarget\":{\"botId\":\"TM7XGIZCM9\",\"botAliasId\":\"TSTALIASID\",\"localeId\":\"en_US\"}}' --api-mode NonStreaming --output text --query '{testExecutionId:testExecutionId}' --region $AWSRegion"     
+    	 		 		}
 			}
 		}
 	}
