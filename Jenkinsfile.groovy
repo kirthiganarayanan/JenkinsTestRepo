@@ -1,5 +1,4 @@
 #!groovy
-import json
 pipeline  {
 	agent any
 	stages {
