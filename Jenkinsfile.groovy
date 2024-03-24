@@ -15,7 +15,7 @@ pipeline  {
 							sleep(120)
 							def output3= sh(returnStdout: true, script: "/usr/local/bin/aws lexv2-models list-test-execution-result-items --result-filter-by '{\"resultTypeFilter\":\"OverallTestResults\",\"conversationLevelTestResultsFilterBy\":{\"endToEndResult\": \"Mismatched\"}}' --region \"$Region\"  --output json --query \'testExecutionResults.overallTestResults.items[0].endToEndResultCounts\' --test-execution-id ${output2}")
 							echo "Result is: ${output3}"		
-							if(output3.Mismatched != null) {
+							if(output3.Mismatched) {
 								echo "In Failure path"
 								sh exit 1
 							}
