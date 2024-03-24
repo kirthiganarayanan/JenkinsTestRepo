@@ -17,7 +17,8 @@ pipeline  {
 							echo "Result is: ${output3}"
 							if (output3 != "0") {
 								echo "In failure path"
-								echo currentBuild.result
+								echo "Init result: ${currentBuild.result}"
+               							echo "Init currentResult: ${currentBuild.currentResult}"
 							    }
                 				}       			        	
     	 		 		}
