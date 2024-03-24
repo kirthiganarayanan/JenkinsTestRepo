@@ -17,7 +17,7 @@ pipeline  {
 							echo "Result is: ${output3}"
 							if (output3 != "0") {
 								echo "In failure path"
-								exit 1
+								return false
 							    }
                 				}       			        	
     	 		 		}
