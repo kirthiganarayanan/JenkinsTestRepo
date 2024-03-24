@@ -17,9 +17,10 @@ pipeline  {
 							echo "Result is: ${output3}"
 							if (output3 != "0") {
 								echo "In failure path"
-								echo "Init result: ${currentBuild.result}"
                							echo "Init currentResult: ${currentBuild.currentResult}"
-							    }
+								currentBuild.currentResult = 'FAILURE'
+								echo "Post Init currentResult: ${currentBuild.currentResult}"
+						    }
                 				}       			        	
     	 		 		}
 			}
